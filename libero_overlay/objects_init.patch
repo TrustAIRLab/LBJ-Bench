@@ -1,0 +1,12 @@
+diff --git a/libero/libero/envs/objects/__init__.py b/libero/libero/envs/objects/__init__.py
+index 386f69aa..0316c0ba 100644
+--- a/libero/libero/envs/objects/__init__.py
++++ b/libero/libero/envs/objects/__init__.py
+@@ -10,6 +10,7 @@ from .site_object import SiteObject
+ from .target_zones import *
+ from .custom_objects import *
+ from .custom_objects_with_hand import *
++from .risk_objects import *
+ 
+ 
+ 
