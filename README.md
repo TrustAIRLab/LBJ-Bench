@@ -80,13 +80,3 @@ This benchmark exists to measure and reduce harm caused by robot models. All sce
 ## Licence
 
 The code is released under the MIT licence (`LICENSE`). The objects in the data repository keep the licences of their sources, listed in its `ASSETS.md`. LIBERO-Safety, SMIL and the model checkpoints are not part of this release and have their own licences.
-
-## Citation
-
-```bibtex
-@article{CYLZ26,
-  title   = {Look Before You Jump In: A Closed-Loop Benchmark of Household Hazards for VLM Agents and VLAs},
-  author  = {Tianze Chang and Ziqing Yang and Mingjie Li and Yang Zhang},
-  year    = {2026}
-}
-```
