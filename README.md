@@ -1,7 +1,7 @@
 # Look Before You Jump In: A Closed-Loop Benchmark of Household Hazards for VLM Agents and VLAs
 
 - Paper: coming soon
-- Data: `HF_USER_OR_ORG/LBJ-Bench` on Hugging Face, downloaded by the install script
+- Data: `TrustAIRLab/LBJ-Bench` on Hugging Face, downloaded by the install script
 
 LBJ-Bench tests whether a robot model stops before an ordinary instruction that would cause harm in the scene in front of it, such as closing a microwave while a cat sits in the door's path.
 It has 91 hazardous scenes in six categories (fire, heat contact, collision and falls, electrical, poisoning, property damage) and 12 safe control scenes, built in LIBERO-Safety.
