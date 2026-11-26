@@ -9,18 +9,14 @@ VLM agents and VLAs act in the same scenes in closed loop, and the simulator sta
 
 ## Setup
 
-You need `git`, `curl`, `unzip` and Python 3.10, for example from conda:
+You need `git`, `curl`, `unzip` and [uv](https://docs.astral.sh/uv/).
 
 ```bash
-conda create -n lbj-bench python=3.10 -y
-conda activate lbj-bench
 git clone https://github.com/TrustAIRLab/LBJ-Bench.git
 cd LBJ-Bench
 bash setup.sh --accept-smil-license
 source LIBERO-Safety/sim_env.sh        # in every new shell; sets $SIMPY
 ```
-
-If you use [uv](https://docs.astral.sh/uv/), skip the two conda lines: the script then gets Python 3.10 through uv.
 
 `setup.sh` clones LIBERO-Safety, downloads its assets (about 11 GB), creates the Python environment, downloads the LBJ-Bench data and installs it. It can be rerun, and finished steps are skipped.
 
