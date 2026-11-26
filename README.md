@@ -65,9 +65,10 @@ python vla/serve_openpi.py pi05_libero 8000          # pi05_libero, pi0_libero, 
 OPENVLA_OFT_DIR=<openvla-oft clone> python vla/serve_openvla.py openvla_oft 8000   # or openvla
 ```
 
-2. In the simulator environment, run the whole benchmark:
+2. In the simulator environment, install the client once and run the whole benchmark:
 
 ```bash
+uv pip install --python $SIMPY "openpi-client @ git+https://github.com/Physical-Intelligence/openpi.git#subdirectory=packages/openpi-client"
 bash run_vla.sh pi05_libero 8000 3     # 3 trials per scene and instruction
 ```
 
