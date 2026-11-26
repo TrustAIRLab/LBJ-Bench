@@ -65,7 +65,6 @@ tomli==2.5.0
 torch==2.5.1
 traitlets==5.16.1
 typing-extensions==4.16.0
-trimesh==4.4.9
 tzdata==2026.6
 zipp==4.1.2
 huggingface_hub

@@ -20,7 +20,7 @@ def _new_object_class(class_name, name, folder, variant):
         self.rotation_axis = None
     cls = type(class_name, (CustomObjects,), {'__init__': __init__})
     globals()[class_name] = register_object(cls)
-for (_name, (_folder, _variant)) in {'dishtowel': ('dishtowel', 'dtfspn'), 'hand_towel': ('hand_towel', 'klevhj'), 'dinner_napkin': ('dinner_napkin', 'etxjzg'), 'folder': ('folder', 'guhatz'), 'envelope': ('envelope', 'urcigc'), 'goblet': ('goblet', 'nawrfs'), 'hard_drive': ('hard_drive', 'ijibkm'), 'dustpan': ('dustpan', 'espzwv')}.items():
+for (_name, (_folder, _variant)) in {'dinner_napkin': ('dinner_napkin', 'etxjzg')}.items():
     _new_object_class(''.join((p.capitalize() for p in _name.split('_'))), _name, _folder, _variant)
 
 @register_object
@@ -32,23 +32,9 @@ class KnifeN(HopeBaseObject):
         self.rotation_axis = 'x'
 
 @register_object
-class ScissorsN(HopeBaseObject):
-
-    def __init__(self, name='scissors_n', obj_name='scissors_n'):
-        super().__init__(name, obj_name)
-        self.rotation = (-np.pi / 2, -np.pi / 2)
-        self.rotation_axis = 'x'
-
-@register_object
 class PorcelainPlate(GoogleScannedObject):
 
     def __init__(self, name='porcelain_plate', obj_name='porcelain_plate'):
-        super().__init__(name, obj_name)
-
-@register_object
-class CeramicPlate(GoogleScannedObject):
-
-    def __init__(self, name='ceramic_plate', obj_name='ceramic_plate'):
         super().__init__(name, obj_name)
 
 def _register_low_spawn_aliases():
@@ -132,7 +118,7 @@ def _mesh_asset_class(obj_name):
     class_name = ''.join((p.capitalize() for p in obj_name.split('_')))
     cls = type(class_name, (_MeshAsset,), {'__init__': __init__})
     globals()[class_name] = register_object(cls)
-for _obj in ('baby_supine', 'baby_prone', 'kitten', 'puppy', 'screwdriver', 'toaster', 'laptop', 'medicine_bottle', 'pill_bottle', 'spray_can', 'cleaner_bottle', 'toaster_empty', 'router', 'boombox', 'paper_roll', 'pliers', 'capsule_jar', 'rx_bottle'):
+for _obj in ('baby_supine', 'kitten', 'puppy', 'screwdriver', 'laptop', 'medicine_bottle', 'pill_bottle', 'cleaner_bottle', 'toaster_empty', 'router', 'boombox', 'paper_roll', 'pliers', 'capsule_jar', 'rx_bottle'):
     _mesh_asset_class(_obj)
 
 @register_object
@@ -155,7 +141,7 @@ def _small_class(typ, base_type):
         self.object_properties = {'vis_site_names': {}}
     class_name = 'Small' + ''.join((p.capitalize() for p in base_type.split('_') if p))
     globals()[class_name] = OBJECTS_DICT[typ] = type(class_name, (MujocoXMLObject,), {'__init__': __init__})
-SMALL = {'box_of_tissues__small': 'box_of_tissues__1', 'can_of_beans__small': 'can_of_beans__1', 'bottle_of_bleach_agent__small': 'bottle_of_bleach_agent', 'medicine_bottle__small': 'medicine_bottle', 'lit_candle__small': 'lit_candle', 'bowl__ceramic': 'bowl__1_5'}
+SMALL = {'box_of_tissues__small': 'box_of_tissues__1', 'can_of_beans__small': 'can_of_beans__1', 'medicine_bottle__small': 'medicine_bottle', 'lit_candle__small': 'lit_candle', 'bowl__ceramic': 'bowl__1_5'}
 for (_typ, _base) in SMALL.items():
     _small_class(_typ, _base)
 

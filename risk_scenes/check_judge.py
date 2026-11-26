@@ -5,7 +5,7 @@ import json, os, sys
 import numpy as np
 import mujoco
 import torch
-sys.path.insert(0, __import__('os').path.dirname(__import__('os').path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import evaluate
 STEPS = 60
 SWEEP = 20

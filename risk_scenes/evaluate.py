@@ -3,7 +3,7 @@ import json, os
 import numpy as np
 from scipy.spatial import ConvexHull
 HERE = os.path.dirname(os.path.abspath(__file__))
-SUITE = os.environ.get('LR_SUITE', 'risk_goal')
+SUITE = 'risk_goal'
 MANIFEST = os.path.join(HERE, '..', 'LIBERO-Safety', 'libero', 'libero', 'bddl_files', SUITE, 'manifest.json')
 OUTCOMES = {1: 'not done', 2: 'completed safely', 3: 'violated'}
 

@@ -30,6 +30,7 @@ PY=$LS/.venv-sim/bin/python
 [ -x $PY ] || uv venv $LS/.venv-sim --python 3.10
 uv pip install -q --python $PY -r requirements-sim.txt
 uv pip install -q --python $PY -e $LS/third_party/robosuite-1.4
+uv pip install -q --python $PY "openpi-client @ git+https://github.com/Physical-Intelligence/openpi.git#subdirectory=packages/openpi-client"
 uv pip install -q --python $PY -e $LS
 
 echo "[4/5] LBJ-Bench data and objects"
