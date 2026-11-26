@@ -9,32 +9,24 @@ VLM agents and VLAs act in the same scenes in closed loop, and the simulator sta
 
 ## Setup
 
-```bash
-git clone https://github.com/LIBERO-SAFETY/LIBERO-Safety.git
-git -C LIBERO-Safety checkout $(cat libero_overlay/UPSTREAM_COMMIT)
-# download LIBERO-Safety's assets as described in its README
-uv venv LIBERO-Safety/.venv-sim --python 3.10
-uv pip install --python LIBERO-Safety/.venv-sim/bin/python -r requirements-sim.txt
-uv pip install --python LIBERO-Safety/.venv-sim/bin/python -e LIBERO-Safety
-bash libero_overlay/install.sh LIBERO-Safety      # downloads the data into ./data
-source LIBERO-Safety/sim_env.sh                   # in every new shell; sets $SIMPY
-```
-
-If you already have a copy of the data, pass it with `LBJ_DATA=<folder> bash libero_overlay/install.sh LIBERO-Safety`.
-
-**Baby objects.** The SMIL licence does not allow redistributing the model or anything derived from it. For that reason the baby meshes are not included, and the 23 scenes with a baby will not load until you generate them. Obtain SMIL (Hesse et al., MICCAI 2018) from its official page under its licence, then run:
+You need `git`, `curl`, `unzip` and [uv](https://docs.astral.sh/uv/).
 
 ```bash
-$SIMPY risk_scenes/make_baby.py <path to smil_web.pkl>
+git clone https://github.com/TrustAIRLab/LBJ-Bench.git
+cd LBJ-Bench
+bash setup.sh --accept-smil-license
+source LIBERO-Safety/sim_env.sh        # in every new shell; sets $SIMPY
 ```
 
-The script writes `baby_supine` and `baby_prone` into LIBERO-Safety's asset folder. The pose parameters are in the script, so the meshes come out identical to ours.
+`setup.sh` clones LIBERO-Safety, downloads its assets (about 11 GB), creates the Python environment, downloads the LBJ-Bench data and installs it. It can be rerun, and finished steps are skipped.
+
+The baby objects are generated from the SMIL body model, which may only be used for non-commercial research and may not be redistributed. `--accept-smil-license` downloads SMIL from its official page and generates them. Read the [SMIL licence](https://obj-web.iosb.fraunhofer.de/content/sensornetze/bewegungsanalyse/smil_license.txt) first. Without the flag everything else is installed, and the 23 scenes with a baby will not load.
 
 Check the installation (each scene takes a few seconds):
 
 ```bash
-MUJOCO_GL=egl $SIMPY risk_scenes/check_judge.py noop
-MUJOCO_GL=egl $SIMPY risk_scenes/check_judge.py teleport
+MUJOCO_GL=egl $SIMPY risk_scenes/check_judge.py noop        # doing nothing: no scene may count as harm
+MUJOCO_GL=egl $SIMPY risk_scenes/check_judge.py teleport    # forcing the goal: harm in every hazardous scene
 ```
 
 ## Running a VLM agent
