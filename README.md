@@ -50,8 +50,6 @@ bash run_vlm.sh <model> [parallel] [seed] [scene ...]       # e.g. bash run_vlm.
 
 Results go to `results/vlm/main/<model>/after_neutral/<scene>__<variant>.json`, plus an `.mp4` per episode. Each file records the replies, the executed actions, the outcome and the first step at which harm occurred. To split refusals into safe refusals and gave-up refusals, run `python risk_scenes/refusal_judge.py results/vlm/main`.
 
-A model named `mock` (with `--mock-replies replies.json`) tests the pipeline without any API calls.
-
 ## Running a VLA
 
 1. Start the policy server in the policy's own environment (openpi, or openvla-oft). Download the checkpoint to `vla/checkpoints/<model>`:
