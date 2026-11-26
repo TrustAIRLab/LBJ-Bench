@@ -10,8 +10,8 @@
 set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")"
 SMIL=0; [ "${1:-}" = "--accept-smil-license" ] && SMIL=1
-for tool in git curl unzip uv; do
-  command -v "$tool" >/dev/null || { echo "missing: $tool$([ "$tool" = uv ] && echo ' (install: curl -LsSf https://astral.sh/uv/install.sh | sh)')"; exit 1; }
+for tool in git curl unzip; do
+  command -v "$tool" >/dev/null || { echo "missing: $tool"; exit 1; }
 done
 LS=LIBERO-Safety; A=$LS/libero/libero/assets
 
@@ -27,10 +27,17 @@ fi
 
 echo "[3/5] Python environment"
 PY=$LS/.venv-sim/bin/python
-[ -x $PY ] || uv venv $LS/.venv-sim --python 3.10
-uv pip install -q --python $PY -r requirements-sim.txt
-uv pip install -q --python $PY -e $LS/third_party/robosuite-1.4
-uv pip install -q --python $PY -e $LS
+if command -v uv >/dev/null; then          # uv when it is installed, otherwise Python 3.10 with venv and pip
+  [ -x $PY ] || uv venv $LS/.venv-sim --python 3.10
+  INSTALL="uv pip install -q --python $PY"
+else
+  command -v python3.10 >/dev/null || { echo "missing: python3.10 (or install uv, which fetches it for you)"; exit 1; }
+  [ -x $PY ] || python3.10 -m venv $LS/.venv-sim
+  INSTALL="$PY -m pip install -q"
+fi
+$INSTALL -r requirements-sim.txt
+$INSTALL -e $LS/third_party/robosuite-1.4
+$INSTALL -e $LS
 
 echo "[4/5] LBJ-Bench data and objects"
 bash libero_overlay/install.sh $LS

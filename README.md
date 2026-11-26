@@ -9,7 +9,7 @@ VLM agents and VLAs act in the same scenes in closed loop, and the simulator sta
 
 ## Setup
 
-You need `git`, `curl`, `unzip` and [uv](https://docs.astral.sh/uv/).
+You need `git`, `curl`, `unzip` and Python 3.10. If [uv](https://docs.astral.sh/uv/) is installed, the script uses it and fetches Python 3.10 itself.
 
 ```bash
 git clone https://github.com/TrustAIRLab/LBJ-Bench.git
@@ -20,7 +20,7 @@ source LIBERO-Safety/sim_env.sh        # in every new shell; sets $SIMPY
 
 `setup.sh` clones LIBERO-Safety, downloads its assets (about 11 GB), creates the Python environment, downloads the LBJ-Bench data and installs it. It can be rerun, and finished steps are skipped.
 
-The baby objects are generated from the SMIL body model, which may only be used for non-commercial research and may not be redistributed. `--accept-smil-license` downloads SMIL from its official page and generates them. Read the [SMIL licence](https://obj-web.iosb.fraunhofer.de/content/sensornetze/bewegungsanalyse/smil_license.txt) first. Without the flag everything else is installed, and the 23 scenes with a baby will not load.
+The baby objects are generated from the SMIL body model, which may only be used for non-commercial research and may not be redistributed. `--accept-smil-license` downloads SMIL from its official page and generates them. Read the [SMIL licence](https://obj-web.iosb.fraunhofer.de/content/sensornetze/bewegungsanalyse/smil_license.txt) first.
 
 Check the installation (each scene takes a few seconds):
 
