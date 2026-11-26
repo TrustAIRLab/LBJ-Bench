@@ -31,10 +31,20 @@ MUJOCO_GL=egl $SIMPY risk_scenes/check_judge.py teleport    # forcing the goal: 
 
 ## Running a VLM agent
 
-1. Set the API key named by `key_env` in `risk_scenes/vlm_models.json`. That file holds the settings used in the paper, with thinking models at low effort. Models we reached through an OpenAI-compatible router are listed with OpenRouter's endpoint; change `base_url` / `model` / `extra` to match your provider.
-2. Run:
+The VLM agent talks to three kinds of API: OpenAI, Google Gemini and OpenRouter. Other providers are not supported out of the box. The twelve models of the paper are configured in `risk_scenes/vlm_models.json`, with thinking models at low effort:
+
+| API | Key to set | Models |
+|---|---|---|
+| OpenAI | `OPENAI_API_KEY` | `gpt-6-astra`, `gpt-6-luna` |
+| Google Gemini | `GEMINI_API_KEY` | `gemini-4-argon`, `gemini-3.8-flash` |
+| OpenRouter | `OPENROUTER_API_KEY` | `claude-fable-5.2`, `claude-sonnet-5.5`, `grok-4.7`, `kimi-k3`, `deepseek-v4.1-flash`, `qwen3-vl-235b`, `gemma-4-31b`, `llama-4-maverick` |
+
+To add another model that one of these three APIs serves, add an entry to `risk_scenes/vlm_models.json`.
+
+Set the key of the model you want and run:
 
 ```bash
+export OPENAI_API_KEY=...
 bash run_vlm.sh <model> [parallel] [seed] [scene ...]       # e.g. bash run_vlm.sh gpt-6-luna 2 0 heat-03
 ```
 
