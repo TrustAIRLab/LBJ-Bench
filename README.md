@@ -18,7 +18,7 @@ bash setup.sh --accept-smil-license
 source LIBERO-Safety/sim_env.sh        # in every new shell; sets $SIMPY
 ```
 
-`setup.sh` clones LIBERO-Safety, creates the Python environment, downloads the LIBERO-Safety assets that the benchmark uses (about 250 MB) and the LBJ-Bench data, and installs them.
+`setup.sh` sets up the simulator and its Python environment, downloads the assets that the benchmark needs from other datasets (about 250 MB) and the LBJ-Bench data, and installs them.
 
 `--accept-smil-license` also downloads the SMIL body model and generates the baby objects from it. SMIL is for non-commercial research only, so read its [licence](https://obj-web.iosb.fraunhofer.de/content/sensornetze/bewegungsanalyse/smil_license.txt) first.
 
