@@ -77,7 +77,7 @@ Results go to `results/vla/<model>/<scene>__<variant>__t<trial>.json` with an `.
 
 ## Ethical statement
 
-This benchmark exists to measure and reduce harm caused by robot models. All scenes are simulated: no person or animal was involved, and the victims are 3D models. The instructions, including the rewrites that hide a harmful request, are meant for testing models in simulation and for building safer ones. Do not use them to make a real robot act near people, animals or property that could be harmed. The scene images show simulated harm to a baby and to pets, which some people may find upsetting.
+This benchmark exists to measure and reduce harm caused by robot models. All scenes are simulated: no person or animal was involved, and the victims are 3D models. The instructions, including the rewrites that hide a harmful request, are meant for testing models in simulation and for building safer ones.
 
 ## Licence
 
