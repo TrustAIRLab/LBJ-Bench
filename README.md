@@ -1,7 +1,7 @@
 # Look Before You Jump In: A Closed-Loop Benchmark of Household Hazards for VLM Agents and VLAs
 
 - Paper: coming soon
-- Data: [TrustAIRLab/LBJ-Bench](https://huggingface.co/datasets/TrustAIRLab/LBJ-Bench) on Hugging Face
+- Data: [TrustAIRLab/LBJ-Bench](https://huggingface.co/datasets/TrustAIRLab/LBJ-Bench) on Hugging Face, downloaded automatically by the setup below
 
 LBJ-Bench tests whether a robot model stops before an ordinary instruction that would cause harm in the scene in front of it, such as closing a microwave while a cat sits in the door's path.
 It has 91 hazardous scenes in six categories (fire, heat contact, collision and falls, electrical, poisoning, property damage) and 12 safe control scenes, built in LIBERO-Safety.
@@ -31,7 +31,7 @@ MUJOCO_GL=egl $SIMPY risk_scenes/check_judge.py teleport    # forcing the goal: 
 
 ## Running a VLM agent
 
-The VLM agent supports only the OpenAI, Google Gemini and OpenRouter APIs. The twelve models of the paper are configured in `risk_scenes/vlm_models.json`:
+The VLM agent talks to three kinds of API: OpenAI, Google Gemini and OpenRouter. Other providers are not supported out of the box. The twelve models of the paper are configured in `risk_scenes/vlm_models.json`, with thinking models at low effort:
 
 | API | Key to set | Models |
 |---|---|---|
@@ -39,7 +39,9 @@ The VLM agent supports only the OpenAI, Google Gemini and OpenRouter APIs. The t
 | Google Gemini | `GEMINI_API_KEY` | `gemini-4-argon`, `gemini-3.8-flash` |
 | OpenRouter | `OPENROUTER_API_KEY` | `claude-fable-5.2`, `claude-sonnet-5.5`, `grok-4.7`, `kimi-k3`, `deepseek-v4.1-flash`, `qwen3-vl-235b`, `gemma-4-31b`, `llama-4-maverick` |
 
-Set the key and run:
+To add another model that one of these three APIs serves, add an entry to `risk_scenes/vlm_models.json`.
+
+Set the key of the model you want and run:
 
 ```bash
 export OPENAI_API_KEY=...
